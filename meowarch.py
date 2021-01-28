@@ -1,6 +1,6 @@
 import os
 import easygui
-from zipfile import ZipFile
+import zipfile
 from os.path import basename
 import shutil
 slash = '\\'
@@ -14,7 +14,7 @@ if ziporunzip == "Archive file":
     thisFile = easygui.fileopenbox(filetypes=["*"], multiple=True)
     nameofzip = easygui.enterbox("Enter name of archive:")
     # filenameWithoutTochka = os.path.splitext(thisFile)[0]
-    zipfile = ZipFile(nameofzip + '.zip', 'w')
+    zipfile = zipfile.ZipFile(nameofzip + '.zip', 'w', zipfile.ZIP_DEFLATED)
     for i in range(len(thisFile)):
         zipfile.write(thisFile[i], basename(thisFile[i]))
     while easygui.buttonbox("Do you want to add more files?", "Meowarch", ("Yes", "No, I added all needed files")) == "Yes":
