@@ -30,10 +30,10 @@ if ziporunzip == "Archive file":
 
 
 if ziporunzip == "Unarchive file":
-    zipfile = easygui.fileopenbox(filetypes=["*"])
+    zipFile = easygui.fileopenbox(filetypes=["*"])
     wheretoextract = easygui.diropenbox("Where to extract files?")
-    filenameWithoutTochka = os.path.splitext(zipfile)[0]
-    os.rename(zipfile, filenameWithoutTochka + ".zip")
-    with ZipFile(filenameWithoutTochka + ".zip", 'r') as zipObj:
+    filenameWithoutTochka = os.path.splitext(zipFile)[0]
+    os.rename(zipFile, filenameWithoutTochka + ".zip")
+    with zipfile.ZipFile(filenameWithoutTochka + ".zip", 'r') as zipObj:
         zipObj.extractall(wheretoextract)
-    os.rename(filenameWithoutTochka + ".zip", zipfile)
+    os.rename(filenameWithoutTochka + ".zip", filenameWithoutTochka + ".meowarch")
